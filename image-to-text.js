@@ -5,15 +5,15 @@ var ioctx = input_overlay.getContext('2d')
 // var output_overlay = document.getElementById('output-overlay')
 var output_text = document.getElementById('log')
 
-var demo_instructions = document.getElementById('demo-instructions')
+var image-to-text_instructions = document.getElementById('image-to-text-instructions')
 
 var drop_instructions = [].slice.call(document.querySelectorAll('.drop-instructions'))
 var options = [].slice.call(document.querySelectorAll('.option'))
 
 // var octx = output.getContext('2d')
 var language = 'eng'
-var demoStarted = false
-var lang_demo_images = {
+var image-to-textStarted = false
+var lang_image-to-text_images = {
 	eng: 'img/eng_bw.png',
 	chi_sim: 'img/chi_sim.png',
 	rus: 'img/rus.png'
@@ -44,12 +44,12 @@ function isOutputVisible(){
 	return output_text.getBoundingClientRect().top < dimensions.height
 }
 
-function startDemoIfVisible(argument) {
-	if(isOutputVisible() && !demoStarted) startDemo();
+function startimage-to-textIfVisible(argument) {
+	if(isOutputVisible() && !image-to-textStarted) startimage-to-text();
 }
 
-function startDemo(){
-	demoStarted = true
+function startimage-to-text(){
+	image-to-textStarted = true
 
 	async function start(){
     await worker.load();
@@ -145,8 +145,8 @@ function result(res){
 }
 
 
-document.addEventListener('scroll', startDemoIfVisible)
-startDemoIfVisible()
+document.addEventListener('scroll', startimage-to-textIfVisible)
+startimage-to-textIfVisible()
 
 
 function clearOverLayAndOutput(){
@@ -154,7 +154,7 @@ function clearOverLayAndOutput(){
 
 	output_text.style.display = 'none'
 
-	demo_instructions.style.display = 'block'
+	image-to-text_instructions.style.display = 'block'
 
 	// octx.clearRect(0,0,output.width, output.height)
 }
@@ -173,7 +173,7 @@ function clearOverLayAndOutput(){
 
 async function play(){
 
-	demo_instructions.style.display = 'none'
+	image-to-text_instructions.style.display = 'none'
 	output_text.style.display = 'block'
 	output_text.innerHTML = ''
 	// output_overlay.innerHTML = ''
@@ -199,8 +199,8 @@ options.forEach(function(option){
 
 		options.forEach(function(option){option.className = 'option'})
 		option.className = 'option selected'
-		if(option.lang in lang_demo_images){
-			input.src = lang_demo_images[option.lang]
+		if(option.lang in lang_image-to-text_images){
+			input.src = lang_image-to-text_images[option.lang]
 			// displayPlayButtonFor(option.lang)
 		}
 	})
